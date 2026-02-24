@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meet the Team — The people behind LOL Coding Club at WIT College, Solapur."
+    />
+    <title>Team | LOL Coding Club — WIT College</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFD600'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='10' fill='%23080808'%3ELOL%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .teams-main {
+        background: #000;
+        margin-top: var(--nav-height);
+        min-height: 100vh;
+        padding: 60px 0 80px;
+      }
+      .teams-hero {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+      .teams-hero h1 {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(2.4rem, 6vw, 3.8rem);
+        font-weight: 800;
+        color: #e8003f;
+        margin-bottom: 14px;
+      }
+      .teams-hero p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+      }
+
+      .accordion-wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .accordion-item {
+        border: 2px solid #ffd600;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .accordion-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 22px 28px;
+        background: #000;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.2s;
+      }
+      .accordion-header:hover {
+        background: #0d0d0d;
+      }
+
+      .accordion-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 7px 0 7px 12px;
+        border-color: transparent transparent transparent #ffd600;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+      }
+      .accordion-item.open .accordion-arrow {
+        transform: rotate(90deg);
+      }
+
+      .accordion-title {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(0.82rem, 2vw, 1rem);
+        font-weight: 800;
+        color: #ffd600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .accordion-body {
+        display: none;
+        background: #080808;
+        padding: 32px 28px;
+        border-top: 1px solid #ffd600;
+      }
+      .accordion-item.open .accordion-body {
+        display: block;
+      }
+
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 22px;
+      }
+
+      /* -- Premium Member Card -- */
+      .member-card-acc {
+        background: #111;
+        border: 1.5px solid #2a2a2a;
+        border-radius: 10px;
+        padding: 28px 16px 0;
+        text-align: center;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .member-card-acc:hover {
+        border-color: #ffd600;
+        transform: translateY(-4px);
+      }
+
+      .member-avatar-acc {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 3px solid #ffd600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto 14px;
+        overflow: hidden;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 3px #1a1500;
+      }
+      .member-avatar-acc img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .member-name-acc {
+        font-family: "Inter", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 5px;
+        padding: 0 4px;
+      }
+      .member-role-acc {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #ffd600;
+        letter-spacing: 0.3px;
+        margin-bottom: 16px;
+      }
+
+      .empty-note {
+        color: #555;
+        font-size: 0.85rem;
+        font-style: italic;
+        text-align: center;
+        padding: 12px 0;
+      }
+
+      /* -- Current Committee Section -- */
+      .current-committee-section {
+        max-width: 900px;
+        margin: 0 auto 56px;
+        padding: 0 24px;
+      }
+
+      .current-committee-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .current-committee-header h2 {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .current-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #ffd600;
+        color: #000;
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 20px;
+        flex-shrink: 0;
+      }
+
+      .current-badge::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #000;
+        border-radius: 50%;
+        animation: pulse-dot 1.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(0.7); }
+      }
+
+      .current-committee-divider {
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(to right, #ffd600, transparent);
+        border-radius: 2px;
+      }
+
+      /* -- Past Committees Section -- */
+      .past-committees-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .past-committees-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .past-committees-header h2 {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 800;
+        color: #888;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0;
+        white-space: nowrap;
+      }
+
+      .past-committees-divider {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, #444, transparent);
+        border-radius: 2px;
+      }
+
+      .past-committees-accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- -- NAVBAR -- -->
+    <header id="header-placeholder">
+      <nav class="navbar" id="main-navbar" aria-label="Main navigation">
+        <div class="nav-inner">
+          <div class="nav-logos">
+            <a
+              href="index.html"
+              class="nav-logo-link"
+              id="logo-lol"
+              aria-label="LOL Coding Club Home"
+            >
+              <img
+                src="logos/lol.png"
+                alt="LOL Coding Club"
+                class="logo-badge logo-lol"
+                style="object-fit: contain; padding: 2px"
+              />
+            </a>
+            <div class="logo-divider" aria-hidden="true"></div>
+            <a
+              href="https://witsolapur.org/"
+              class="nav-logo-link"
+              id="logo-wit"
+              aria-label="WIT College"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="logos/wit.jfif"
+                alt="WIT College"
+                class="logo-badge logo-wit"
+                style="object-fit: contain; padding: 2px"
+              />
+            </a>
+          </div>
+          <nav class="nav-menu" aria-label="Desktop navigation">
+            <a href="index.html" class="nav-link" id="nav-home">Home</a>
+            <a
+              href="https://witsolapur.org/"
+              class="nav-link"
+              id="nav-wit"
+              target="_blank"
+              rel="noopener"
+              >WIT</a
+            >
+            <a href="about.html" class="nav-link" id="nav-about">About</a>
+            <a href="events.html" class="nav-link" id="nav-events">Events</a>
+            <a href="team.html" class="nav-link active" id="nav-team">Team</a>
+            <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="nav-blog">Blog</a>
+            <a href="alumni.html" class="nav-link alumni-link" id="nav-alumni"
+              >Alumni Connect</a
+            >
+          </nav>
+          <button
+            class="hamburger"
+            id="hamburger-btn"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-drawer"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+      <div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+        <nav class="nav-menu-mobile" aria-label="Mobile navigation">
+          <a href="index.html" class="nav-link" id="mob-home">Home</a>
+          <a
+            href="https://witsolapur.org/"
+            class="nav-link"
+            id="mob-wit"
+            target="_blank"
+            rel="noopener"
+            >WIT</a
+          >
+          <a href="about.html" class="nav-link" id="mob-about">About</a>
+          <a href="events.html" class="nav-link" id="mob-events">Events</a>
+          <a href="team.html" class="nav-link active" id="mob-team">Team</a>
+          <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="mob-blog">Blog</a>
+          <a href="alumni.html" class="nav-link alumni-link" id="mob-alumni"
+            >Alumni Connect</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- -- PAGE CONTENT -- -->
+    <main class="teams-main">
+      <div class="teams-hero">
+        <h1>Teams</h1>
+        <p>Presenting the Phenomenal Team Fueling Our LOL Coding Club! ? ??</p>
+      </div>
+
+      <!-- -- CURRENT COMMITTEE (2026-27) -- -->
+      <div class="current-committee-section">
+        <div class="current-committee-header">
+          <span class="current-badge">Current</span>
+          <h2>Committee 2026-27</h2>
+          <div class="current-committee-divider"></div>
+        </div>
+        <div class="members-grid">
+              <!-- Yessha Bapna -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Yessha Bapna.jpeg" alt="Yessha Bapna" />
+                </div>
+                <div class="member-name-acc">Yessha Bapna</div>
+                <div class="member-role-acc">President</div></div>              <!-- Monika Gidwani -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Monika Gidwani.jpeg" alt="Monika Gidwani" />
+                </div>
+                <div class="member-name-acc">Monika Gidwani</div>
+                <div class="member-role-acc">Vice President</div></div>              <!-- Suhani Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Suhanijain.png" alt="Suhani Jain" />
+                </div>
+                <div class="member-name-acc">Suhani Jain</div>
+                <div class="member-role-acc">Secretary</div></div>              <!-- Diya Lodha -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Diya_Lodha.png" alt="Diya Lodha" />
+                </div>
+                <div class="member-name-acc">Diya Lodha</div>
+                <div class="member-role-acc">Joint Secretary</div></div>              <!-- Renee Palsapure -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Renee_Palsapure.jpg.jpeg" alt="Renee Palsapure" />
+                </div>
+                <div class="member-name-acc">Renee Palsapure</div>
+                <div class="member-role-acc">Graphics Designer</div></div>              <!-- Sachin Pangal -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/SachinPangal.b24e645b13000ffd3c1b.jpg" alt="Sachin Pangal" />
+                </div>
+                <div class="member-name-acc">Sachin Pangal</div>
+                <div class="member-role-acc">Technical Head</div></div>              <!-- Mansi Patil -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Mansi Patil.jpeg" alt="Mansi Patil" />
+                </div>
+                <div class="member-name-acc">Mansi Patil</div>
+                <div class="member-role-acc">Director</div></div>              <!-- Tanisha Surana -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Tanisha_Surana.jpg.jpeg" alt="Tanisha Surana" />
+                </div>
+                <div class="member-name-acc">Tanisha Surana</div>
+                <div class="member-role-acc">Director</div></div>              <!-- Rutu Kadage -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Rutu Kadage .jpg.jpeg" alt="Rutu Kadage" />
+                </div>
+                <div class="member-name-acc">Rutu Kadage</div>
+                <div class="member-role-acc">Director</div></div>              <!-- Gururaj Gurram -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Gururaj Gurram.jpeg" alt="Gururaj Gurram" />
+                </div>
+                <div class="member-name-acc">Gururaj Gurram</div>
+                <div class="member-role-acc">Technical Director</div></div>              <!-- Ansh Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Ansh Jain.jpeg" alt="Ansh Jain" />
+                </div>
+                <div class="member-name-acc">Ansh Jain</div>
+                <div class="member-role-acc">Technical Director</div></div>              <!-- Om Pise -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/om_pise.jpg.jpeg" alt="Om Pise" />
+                </div>
+                <div class="member-name-acc">Om Pise</div>
+                <div class="member-role-acc">Technical Director</div></div>              <!-- Pranita Zalli -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Pranita_Zalli.jpg.jpeg" alt="Pranita Zalli" />
+                </div>
+                <div class="member-name-acc">Pranita Zalli</div>
+                <div class="member-role-acc">Technical Director</div></div>              <!-- Chinmay Upase -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Chinmay Upase .png" alt="Chinmay Upase" />
+                </div>
+                <div class="member-name-acc">Chinmay Upase</div>
+                <div class="member-role-acc">Student Coordinator</div></div>              <!-- Vidya Gangji -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Vidya_Gangji.jpeg" alt="Vidya Gangji" />
+                </div>
+                <div class="member-name-acc">Vidya Gangji</div>
+                <div class="member-role-acc">Student Coordinator</div></div>              <!-- Sanika Birajdar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Sanika_Birajdar.jpg.jpeg" alt="Sanika Birajdar" />
+                </div>
+                <div class="member-name-acc">Sanika Birajdar</div>
+                <div class="member-role-acc">Student Coordinator</div></div>              <!-- Manasi Choudhri -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/26-27/Manasi_Choudhari.jpg.jpeg" alt="Manasi Choudhri" />
+                </div>
+                <div class="member-name-acc">Manasi Choudhri</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+        </div>
+      </div>
+      <!-- /current-committee-section -->
+
+      <!-- -- PAST COMMITTEES -- -->
+      <div class="past-committees-section">
+        <div class="past-committees-header">
+          <h2>Past Committees</h2>
+          <div class="past-committees-divider"></div>
+        </div>
+        <div class="past-committees-accordion">
+
+        <!-- 2025-26 -->
+        <div class="accordion-item" id="acc-2025">
+          <div class="accordion-header" onclick="toggleAcc('acc-2025')">
+            <div class="accordion-arrow"></div>
+            <div class="accordion-title">LOL Coding Club Committee 2025-26</div>
+          </div>
+          <div class="accordion-body">
+            <div class="members-grid">
+
+              <!-- 1. Aditya Dhepe -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/AdityaDhepe.8a6c98844eaf49aad6cf (1).png" alt="Aditya Dhepe" />
+                </div>
+                <div class="member-name-acc">Aditya Dhepe</div>
+                <div class="member-role-acc">President</div></div>
+
+              <!-- 2. Jahnavi Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/JahnaviJain.18edb13e0b54d6d77fe6.jpg" alt="Jahnavi Jain" />
+                </div>
+                <div class="member-name-acc">Jahnavi Jain</div>
+                <div class="member-role-acc">Vice President</div></div>
+
+              <!-- 3. Chavi Maru -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/ChaviMaru.ec847de16cdc5de93322.png" alt="Chavi Maru" />
+                </div>
+                <div class="member-name-acc">Chavi Maru</div>
+                <div class="member-role-acc">Secretary</div></div>
+
+              <!-- 4. Arpita Baraskar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/ArpitaBaraskar.285486860d43fb9149f8.jpg" alt="Arpita Baraskar" />
+                </div>
+                <div class="member-name-acc">Arpita Baraskar</div>
+                <div class="member-role-acc">Joint Secretary</div></div>
+
+              <!-- 5. Om Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/OmJain.9d558443adccfcd39bde.jpg" alt="Om Jain" />
+                </div>
+                <div class="member-name-acc">Om Jain</div>
+                <div class="member-role-acc">Treasurer</div></div>
+
+              <!-- 6. Trushika Basude -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/TrushikaBasude.409600cfda76d5b4fc55.jpg" alt="Trushika Basude" />
+                </div>
+                <div class="member-name-acc">Trushika Basude</div>
+                <div class="member-role-acc">Social Media Head</div></div>
+
+              <!-- 7. Himanshi Nagori -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/HimanshiNagori.983e892f70eddc7610a9.jpg" alt="Himanshi Nagori" />
+                </div>
+                <div class="member-name-acc">Himanshi Nagori</div>
+                <div class="member-role-acc">Design Head</div></div>
+
+              <!-- 8. Archit Yadav -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/ArchitaYadav.7716c23fd9a7c0da26fa.jpg" alt="Archit Yadav" />
+                </div>
+                <div class="member-name-acc">Archit Yadav</div>
+                <div class="member-role-acc">Technical Head</div></div>
+
+              <!-- 9. Sachin Pangal -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/SachinPangal.b24e645b13000ffd3c1b.jpg" alt="Sachin Pangal" />
+                </div>
+                <div class="member-name-acc">Sachin Pangal</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 10. Rushan Shaikh -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/RushanShaikh.3364c3ea233331479f07.jpg" alt="Rushan Shaikh" />
+                </div>
+                <div class="member-name-acc">Rushan Shaikh</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 11. Sanjana Surpurkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/SanjanaSurpurkar.fd5786626beb2b9a4bb4.jpg" alt="Sanjana Surpurkar" />
+                </div>
+                <div class="member-name-acc">Sanjana Surpurkar</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 12. Yessha Bapna -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/YesshaBapna.49fa7690eabf6309efdf.png" alt="Yessha Bapna" />
+                </div>
+                <div class="member-name-acc">Yessha Bapna</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 13. Ronak Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/RonakJain.85a4e1a05abd362c63e6.jpg" alt="Ronak Jain" />
+                </div>
+                <div class="member-name-acc">Ronak Jain</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 14. Priyal Tyaral -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/PriyalTyaral.d7bd20ef02757ed85112.jpg" alt="Priyal Tyaral" />
+                </div>
+                <div class="member-name-acc">Priyal Tyaral</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 15. Monika Gidwani -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/MonikaGidwani.1e7d05540e1ae174acb3.png" alt="Monika Gidwani" />
+                </div>
+                <div class="member-name-acc">Monika Gidwani</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 16. Suhani Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/SuhaniJain.ed843a31b604b8e62456.png" alt="Suhani Jain" />
+                </div>
+                <div class="member-name-acc">Suhani Jain</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 17. Diya Lodha -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/25-26/DiyaLodha.f7c6b1e6a5ce114f7ce1.png" alt="Diya Lodha" />
+                </div>
+                <div class="member-name-acc">Diya Lodha</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024-25 -->
+        <div class="accordion-item" id="acc-2024">
+          <div class="accordion-header" onclick="toggleAcc('acc-2024')">
+            <div class="accordion-arrow"></div>
+            <div class="accordion-title">LOL Coding Club Committee 2024-25</div>
+          </div>
+          <div class="accordion-body">
+            <div class="members-grid">
+
+              <!-- 1. Ketaki Bidkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/KetakiBidkar.d7616c2a6dba831ab776.png" alt="Ketaki Bidkar" />
+                </div>
+                <div class="member-name-acc">Ketaki Bidkar</div>
+                <div class="member-role-acc">President</div></div>
+
+              <!-- 2. Shubham Bayas -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ShubhamBayas.6f5b20d3e73e9434a85c.png" alt="Shubham Bayas" />
+                </div>
+                <div class="member-name-acc">Shubham Bayas</div>
+                <div class="member-role-acc">Vice President</div></div>
+
+              <!-- 3. Nikhilkumar Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/NikhilkumarJain.31a7ddd90c2d55b1fe71.png" alt="Nikhilkumar Jain" />
+                </div>
+                <div class="member-name-acc">Nikhilkumar Jain</div>
+                <div class="member-role-acc">Secretary</div></div>
+
+              <!-- 4. Jahnavi Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/JahnaviJain.18edb13e0b54d6d77fe6.jpg" alt="Jahnavi Jain" />
+                </div>
+                <div class="member-name-acc">Jahnavi Jain</div>
+                <div class="member-role-acc">Joint Secretary</div></div>
+
+              <!-- 5. Abhay Shankur -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/AbhayShankur.de7407d6d4d77f16f8e3.jpg" alt="Abhay Shankur" />
+                </div>
+                <div class="member-name-acc">Abhay Shankur</div>
+                <div class="member-role-acc">Treasurer</div></div>
+
+              <!-- 6. Shruti Pawar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ShrutiPawar.f70121f0c77d27ceaf36.jpeg" alt="Shruti Pawar" />
+                </div>
+                <div class="member-name-acc">Shruti Pawar</div>
+                <div class="member-role-acc">Design &amp; Media Manager</div></div>
+
+              <!-- 7. Yogesh Kulkarni -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/YogeshKulkarni.0d0526afddf68f8e76dc.png" alt="Yogesh Kulkarni" />
+                </div>
+                <div class="member-name-acc">Yogesh Kulkarni</div>
+                <div class="member-role-acc">Technical Head</div></div>
+
+              <!-- 8. Siddharth Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/SiddharthJain.f2d5853c4a297bc7b83b.jpg" alt="Siddharth Jain" />
+                </div>
+                <div class="member-name-acc">Siddharth Jain</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 9. Chavi Maru -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ChaviMaru.ec847de16cdc5de93322.png" alt="Chavi Maru" />
+                </div>
+                <div class="member-name-acc">Chavi Maru</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 10. Arpita Baraskar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ArpitaBaraskar.285486860d43fb9149f8.jpg" alt="Arpita Baraskar" />
+                </div>
+                <div class="member-name-acc">Arpita Baraskar</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 11. Om Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/OmJain.9d558443adccfcd39bde.jpg" alt="Om Jain" />
+                </div>
+                <div class="member-name-acc">Om Jain</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 12. Trushika Basude -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/TrushikaBasude.409600cfda76d5b4fc55.jpg" alt="Trushika Basude" />
+                </div>
+                <div class="member-name-acc">Trushika Basude</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 13. Aditya Dhepe -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/AdityaDhepe.8a6c98844eaf49aad6cf.png" alt="Aditya Dhepe" />
+                </div>
+                <div class="member-name-acc">Aditya Dhepe</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 14. Mahesh Mhanta -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/MaheshMhanta.a5d83b3c57f3177f6e48.png" alt="Mahesh Mhanta" />
+                </div>
+                <div class="member-name-acc">Mahesh Mhanta</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 15. A.B. Perampalli -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/A.B.Peerampalli.61603ba7b1b45ad48d4f.png" alt="A.B. Perampalli" />
+                </div>
+                <div class="member-name-acc">A.B. Perampalli</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 16. Irfan Shaikh -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/IrfanShaikh.1effc0c39abbd55a52df.png" alt="Irfan Shaikh" />
+                </div>
+                <div class="member-name-acc">Irfan Shaikh</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 17. Priyanka Sundalam -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/PriyankaSundalam.e2bdfd3563a8ef87440e.png" alt="Priyanka Sundalam" />
+                </div>
+                <div class="member-name-acc">Priyanka Sundalam</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 18. Laksh Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/LakshJain.025a36eb0710d08368d5.png" alt="Laksh Jain" />
+                </div>
+                <div class="member-name-acc">Laksh Jain</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 19. Komal Kalshetti -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/KomalKalshetti.22593f2c00fb89bd4af1.png" alt="Komal Kalshetti" />
+                </div>
+                <div class="member-name-acc">Komal Kalshetti</div>
+                <div class="member-role-acc">Technical Director</div></div>
+
+              <!-- 20. Priyanka Hotkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/PriyankaHotkar.a8b72a7642fc17e71977.png" alt="Priyanka Hotkar" />
+                </div>
+                <div class="member-name-acc">Priyanka Hotkar</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 21. Sanjana Mutkiri -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/SanjanaMutkiri.a225a06e7e9b8e486ef3.png" alt="Sanjana Mutkiri" />
+                </div>
+                <div class="member-name-acc">Sanjana Mutkiri</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 22. Sanika Chougule -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/SanikaChougule.211318a48589ba0b326a.png" alt="Sanika Chougule" />
+                </div>
+                <div class="member-name-acc">Sanika Chougule</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 23. Arihant Gundale -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ArihantGundale.93d8f97fe8530afbb85d.png" alt="Arihant Gundale" />
+                </div>
+                <div class="member-name-acc">Arihant Gundale</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 24. Aryan Bhandari -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/AryanBhandari.c3d303cb2bfe429e3786.jpeg" alt="Aryan Bhandari" />
+                </div>
+                <div class="member-name-acc">Aryan Bhandari</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 25. Parmita Patre -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/ParmitaPatre.9ec426d7aeeec53d5710.png" alt="Parmita Patre" />
+                </div>
+                <div class="member-name-acc">Parmita Patre</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 26. Pranav Jinturkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/PranavJintorkar.ccfaf7e34d5a989e9071.png" alt="Pranav Jinturkar" />
+                </div>
+                <div class="member-name-acc">Pranav Jinturkar</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 27. Gaurav Kulkarni -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/24-25/GauravKulkarni.af440a63f294a6fef500.png" alt="Gaurav Kulkarni" />
+                </div>
+                <div class="member-name-acc">Gaurav Kulkarni</div>
+                <div class="member-role-acc">Graphic Designer</div></div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- 2023-24 -->
+        <div class="accordion-item" id="acc-2023">
+          <div class="accordion-header" onclick="toggleAcc('acc-2023')">
+            <div class="accordion-arrow"></div>
+            <div class="accordion-title">LOL Coding Club Committee 2023-24</div>
+          </div>
+          <div class="accordion-body">
+            <div class="members-grid">
+
+              <!-- 1. Chinmay Annadate -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/ChinmayAnnadate..jpg" alt="Chinmay Annadate" />
+                </div>
+                <div class="member-name-acc">Chinmay Annadate</div>
+                <div class="member-role-acc">President</div></div>
+
+              <!-- 2. Laxmi Kurapati -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/LaxmiKurapati.jpg" alt="Laxmi Kurapati" />
+                </div>
+                <div class="member-name-acc">Laxmi Kurapati</div>
+                <div class="member-role-acc">Vice President</div></div>
+
+              <!-- 3. Vivek Gogi -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/VivekGogi.jpg" alt="Vivek Gogi" />
+                </div>
+                <div class="member-name-acc">Vivek Gogi</div>
+                <div class="member-role-acc">Secretary</div></div>
+
+              <!-- 4. Pratiksha Kasliwal -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/PratikshaKasliwal.jpg" alt="Pratiksha Kasliwal" />
+                </div>
+                <div class="member-name-acc">Pratiksha Kasliwal</div>
+                <div class="member-role-acc">Joint Secretary</div></div>
+
+              <!-- 5. Varun Palrecha -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/VarunPalrecha.jfif" alt="Varun Palrecha" />
+                </div>
+                <div class="member-name-acc">Varun Palrecha</div>
+                <div class="member-role-acc">Treasurer</div></div>
+
+              <!-- 6. Yash Gosavi -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/YashGosavi.jpg" alt="Yash Gosavi" />
+                </div>
+                <div class="member-name-acc">Yash Gosavi</div>
+                <div class="member-role-acc">Social Media Manager</div></div>
+
+              <!-- 7. Sakshi Bidwai -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/SakshiBidwai.png" alt="Sakshi Bidwai" />
+                </div>
+                <div class="member-name-acc">Sakshi Bidwai</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 8. Aditya Gadekar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/AdityaGadekar.png" alt="Aditya Gadekar" />
+                </div>
+                <div class="member-name-acc">Aditya Gadekar</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 9. Suneet Nankani -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/SuneetNankani.jpg" alt="Suneet Nankani" />
+                </div>
+                <div class="member-name-acc">Suneet Nankani</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 10. Lavanya Indapure -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/LavanyaIndapure.jpg" alt="Lavanya Indapure" />
+                </div>
+                <div class="member-name-acc">Lavanya Indapure</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 11. Tanmay Kanhed -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/TanmayKanhed.jpeg" alt="Tanmay Kanhed" />
+                </div>
+                <div class="member-name-acc">Tanmay Kanhed</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 12. Pourneema Kulkarni -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/PourneemaKulkarni.jpg" alt="Pourneema Kulkarni" />
+                </div>
+                <div class="member-name-acc">Pourneema Kulkarni</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 13. Srushti Walli -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/SrushtiWalli.20cc5b6a79d26578dce3.jpg" alt="Srushti Walli" />
+                </div>
+                <div class="member-name-acc">Srushti Walli</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 14. Abhay Shankur -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/AbhayShankur.de7407d6d4d77f16f8e3.jpg" alt="Abhay Shankur" />
+                </div>
+                <div class="member-name-acc">Abhay Shankur</div>
+                <div class="member-role-acc">Executive Coordinator</div></div>
+
+              <!-- 15. Siddharth Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/SiddharthJain.f2d5853c4a297bc7b83b.jpg" alt="Siddharth Jain" />
+                </div>
+                <div class="member-name-acc">Siddharth Jain</div>
+                <div class="member-role-acc">Executive Coordinator</div></div>
+
+              <!-- 16. Mrudula Lokhande -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/MrudulaLokhande.ce0d1fdf974917af51e5.jpg" alt="Mrudula Lokhande" />
+                </div>
+                <div class="member-name-acc">Mrudula Lokhande</div>
+                <div class="member-role-acc">Executive Coordinator</div></div>
+
+              <!-- 17. Shruti Pawar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/ShrutiPawar.f70121f0c77d27ceaf36.jpeg" alt="Shruti Pawar" />
+                </div>
+                <div class="member-name-acc">Shruti Pawar</div>
+                <div class="member-role-acc">Graphic Designer</div></div>
+
+              <!-- 18. Arpita Baraskar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/ArpitaBaraskar.285486860d43fb9149f8.jpg" alt="Arpita Baraskar" />
+                </div>
+                <div class="member-name-acc">Arpita Baraskar</div>
+                <div class="member-role-acc">Graphic Designer</div></div>
+
+              <!-- 19. Aryan Bhandari -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/AryanBhandari.c3d303cb2bfe429e3786.jpeg" alt="Aryan Bhandari" />
+                </div>
+                <div class="member-name-acc">Aryan Bhandari</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 20. Om Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/OmJain.9d558443adccfcd39bde.jpg" alt="Om Jain" />
+                </div>
+                <div class="member-name-acc">Om Jain</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 21. Jahnavi Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/JahnaviJain.18edb13e0b54d6d77fe6.jpg" alt="Jahnavi Jain" />
+                </div>
+                <div class="member-name-acc">Jahnavi Jain</div>
+                <div class="member-role-acc">Student Coordinator</div></div>
+
+              <!-- 22. Akash Pawar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/AkashPawar.d4e48cdbdb39dd561ed1.jpg" alt="Akash Pawar" />
+                </div>
+                <div class="member-name-acc">Akash Pawar</div>
+                <div class="member-role-acc">Content Writer</div></div>
+
+              <!-- 23. Trushika Basude -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img src="Commitee/23-24/TrushikaBasude.409600cfda76d5b4fc55.jpg" alt="Trushika Basude" />
+                </div>
+                <div class="member-name-acc">Trushika Basude</div>
+                <div class="member-role-acc">Content Writer</div></div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Founding Members 2022-23 -->
+        <div class="accordion-item" id="acc-2022">
+          <div class="accordion-header" onclick="toggleAcc('acc-2022')">
+            <div class="accordion-arrow"></div>
+            <div class="accordion-title">
+              LOL Coding Club Founding Members 2022-23
+            </div>
+          </div>
+          <div class="accordion-body">
+            <div class="members-grid">
+              <!-- 1. Akshita Joshi -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/AkshitaJoshi.jpg"
+                    alt="Akshita Joshi"
+                  />
+                </div>
+                <div class="member-name-acc">Akshita Joshi</div>
+                <div class="member-role-acc">President</div></div>
+
+              <!-- 2. Sanyam Rawane Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/SanyamRawaneJain.jpg"
+                    alt="Sanyam Rawane Jain"
+                  />
+                </div>
+                <div class="member-name-acc">Sanyam Rawane Jain</div>
+                <div class="member-role-acc">Vice President</div></div>
+
+              <!-- 3. Varun Lohade -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/VarunLohade.jpg"
+                    alt="Varun Lohade"
+                  />
+                </div>
+                <div class="member-name-acc">Varun Lohade</div>
+                <div class="member-role-acc">Secretary</div></div>
+
+              <!-- 4. Akarsha Jain -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/AkarshaJain.jpg"
+                    alt="Akarsha Jain"
+                  />
+                </div>
+                <div class="member-name-acc">Akarsha Jain</div>
+                <div class="member-role-acc">Joint Secretary</div></div>
+
+              <!-- 5. Chetas Raulkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/ChetasRaulkar.png"
+                    alt="Chetas Raulkar"
+                  />
+                </div>
+                <div class="member-name-acc">Chetas Raulkar</div>
+                <div class="member-role-acc">Treasurer</div></div>
+
+              <!-- 6. Durgesh Kudalkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/DurgeshKudalkar.jpg"
+                    alt="Durgesh Kudalkar"
+                  />
+                </div>
+                <div class="member-name-acc">Durgesh Kudalkar</div>
+                <div class="member-role-acc">Social Media Manager</div></div>
+
+              <!-- 7. Rajas Daryapurkar -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/RajasDaryapurkar.jpg"
+                    alt="Rajas Daryapurkar"
+                  />
+                </div>
+                <div class="member-name-acc">Rajas Daryapurkar</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 8. Pushkar Konasirasgi -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/PushkarKonasirasgi.jfif"
+                    alt="Pushkar Konasirasgi"
+                  />
+                </div>
+                <div class="member-name-acc">Pushkar Konasirasgi</div>
+                <div class="member-role-acc">Director</div></div>
+
+              <!-- 9. Mitali Lade -->
+              <div class="member-card-acc">
+                <div class="member-avatar-acc">
+                  <img
+                    src="Commitee/FoundingMembers/MitaliLade.jpg"
+                    alt="Mitali Lade"
+                  />
+                </div>
+                <div class="member-name-acc">Mitali Lade</div>
+                <div class="member-role-acc">Director</div></div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- /past-committees-accordion -->
+      </div>
+      <!-- /past-committees-section -->
+    </main>
+
+    <!-- -- FOOTER -- -->
+    <footer class="site-footer" id="main-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img
+                src="logos/lol.png"
+                alt="LOL Coding Club"
+                class="footer-logo-badge"
+                style="object-fit: contain; padding: 2px"
+              />
+              <div><div class="footer-brand-name">LOL Coding Club</div></div>
+            </div>
+            <p class="footer-brand-desc">
+              Walchand Institute Of Technology, Solapur
+            </p>
+            <div class="footer-social" aria-label="Social media links">
+              <a href="https://instagram.com/lolcodingclub_wit" target="_blank" rel="noopener" class="social-icon" id="footer-instagram"
+                aria-label="Instagram"
+                title="Instagram"
+                ><svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  /></svg
+              ></a>
+              <a href="https://linkedin.com/company/lol-coding-club" target="_blank" rel="noopener" class="social-icon" id="footer-linkedin"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                ><svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  /></svg
+              ></a>
+              <a
+                href="#"
+                class="social-icon"
+                id="footer-github"
+                aria-label="GitHub"
+                title="GitHub"
+                ><svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  /></svg
+              ></a>
+
+            </div>
+          </div>
+          <div>
+            <h3 class="footer-col-title">Quick Links</h3>
+            <nav class="footer-links" aria-label="Quick footer links">
+              <a href="index.html" id="flink-home">Home</a>
+              <a href="about.html" id="flink-about">About Us</a>
+              <a href="events.html" id="flink-events">Events</a>
+              <a href="team.html" id="flink-team">Our Team</a>
+              <a href="https://lolclubwit.hashnode.dev/" target="_blank" id="flink-blog">Blog</a>
+              <a href="alumni.html" id="flink-alumni">Alumni Connect</a>
+            </nav>
+          </div>
+          <div>
+            <h3 class="footer-col-title">Explore</h3>
+            <nav class="footer-links" aria-label="Explore footer links">
+              <a href="https://forms.gle/5z7xPwGLCXi7H6JK6" target="_blank" id="flink-membership">Get Membership</a>
+              <a href="https://lolclubwit.hashnode.dev/newsletter" target="_blank" id="flink-newsletter">Subscribe Newsletter</a>
+              <a href="https://forms.gle/Z6DweHCPtx71WQ8z6" target="_blank" id="flink-blog-write">Write for LOL Blog</a>
+              <a href="https://forms.gle/e9BXPs5g1SFAZd5J8" target="_blank" id="flink-suggestion">Suggestion Box</a>
+            </nav>
+          </div>
+          <div>
+            <h3 class="footer-col-title">Stay Updated</h3>
+            <p class="footer-newsletter-desc">
+              Get the latest updates on events, workshops, and hackathons from
+              LOL Coding Club.
+            </p>
+            <form
+              class="newsletter-form"
+              id="footer-newsletter-form"
+              novalidate
+            >
+              <input
+                type="email"
+                class="newsletter-input"
+                id="footer-email-input"
+                placeholder="Enter your email"
+                aria-label="Email address"
+                required
+              />
+              <button
+                type="submit"
+                class="newsletter-btn"
+                id="footer-subscribe-btn"
+              >
+                Subscribe ?
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-inner">
+            <p class="footer-copyright">
+              © 2026 <span>LOL Coding Club</span> · WIT College · All rights
+              reserved. Made with ?? by students, for students.
+            </p>
+            <div class="footer-bottom-links">
+              <a href="#" id="flink-privacy">Privacy Policy</a>
+              <a href="#" id="flink-terms">Terms of Use</a>
+              <a href="#" id="flink-contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Back to top">
+      ?
+    </button>
+    <script src="script.js"></script>
+    <script>
+      function toggleAcc(id) {
+        document.getElementById(id).classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About LOL Coding Club — Learn who we are, our mission, and the story behind WIT College's premier coding community." />
+  <title>About Us | LOL Coding Club — WIT College</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFD600'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='10' fill='%23080808'%3ELOL%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<header id="header-placeholder">
+  <nav class="navbar" id="main-navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <div class="nav-logos">
+        <a href="index.html" class="nav-logo-link" id="logo-lol" aria-label="LOL Coding Club Home">
+          <img src="logos/lol.png" alt="LOL Coding Club" class="logo-badge logo-lol" style="object-fit:contain;padding:2px;" />
+        </a>
+        <div class="logo-divider" aria-hidden="true"></div>
+        <a href="#" class="nav-logo-link" id="logo-wit" aria-label="WIT College">
+          <img src="logos/wit.jfif" alt="WIT College" class="logo-badge logo-wit" style="object-fit:contain;padding:2px;" />
+        </a>
+      </div>
+      <nav class="nav-menu" aria-label="Desktop navigation">
+        <a href="index.html" class="nav-link"              id="nav-home">Home</a>
+        <a href="https://witsolapur.org/" class="nav-link"              id="nav-wit" target="_blank" rel="noopener">WIT</a>
+        <a href="about.html" class="nav-link active"       id="nav-about">About</a>
+        <a href="events.html" class="nav-link"             id="nav-events">Events</a>
+        <a href="team.html"  class="nav-link"              id="nav-team">Team</a>
+        <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="nav-blog">Blog</a>
+        <a href="alumni.html" class="nav-link alumni-link"  id="nav-alumni">Alumni Connect</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav class="nav-menu-mobile" aria-label="Mobile navigation">
+      <a href="index.html"  class="nav-link"             id="mob-home">Home</a>
+      <a href="https://witsolapur.org/"  class="nav-link"             id="mob-wit" target="_blank" rel="noopener">WIT</a>
+      <a href="about.html"  class="nav-link active"      id="mob-about">About</a>
+      <a href="events.html" class="nav-link"             id="mob-events">Events</a>
+      <a href="team.html"   class="nav-link"             id="mob-team">Team</a>
+      <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="mob-blog">Blog</a>
+      <a href="#"           class="nav-link alumni-link" id="mob-alumni">Alumni Connect</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — About heading + Logo cards
+════════════════════════════════════════ -->
+<main style="margin-top: var(--nav-height); background:#000;">
+
+  <section id="about-hero" style="padding: 60px 0 48px; text-align:center; background:#000;">
+    <div style="max-width:900px; margin:0 auto; padding:0 24px;">
+      <h1 style="font-family:'Inter',sans-serif; font-size:clamp(2.4rem,6vw,4rem); font-weight:800; color:#e8003f; margin-bottom:14px;">About</h1>
+      <p style="font-size:1rem; color:#ccc; margin-bottom:48px;">💻 Know about our Coding Community 🚀</p>
+
+      <!-- Two logo cards -->
+      <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+
+        <!-- WIT Card -->
+        <div style="background:#fff; border-radius:12px; padding:24px; width:220px; display:flex; flex-direction:column; align-items:center; gap:16px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
+          <img src="logos/wit.jfif" alt="Walchand Institute of Technology logo" style="width:160px; height:160px; object-fit:contain;" />
+          <p style="font-size:1.3rem; font-weight:700; color:#111; margin:0;">WIT, Solapur</p>
+        </div>
+
+        <!-- LOL Card -->
+        <div style="background:#fff; border-radius:12px; padding:24px; width:220px; display:flex; flex-direction:column; align-items:center; gap:16px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
+          <img src="logos/lol.png" alt="LOL Coding Club logo" style="width:160px; height:160px; object-fit:contain;" />
+          <p style="font-size:1.3rem; font-weight:700; color:#111; margin:0;">Coding Club</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — Events + What is LOL / What we do
+  ════════════════════════════════════════ -->
+  <section id="about-info" style="padding: 48px 0; background:#000;">
+    <div style="max-width:960px; margin:0 auto; padding:0 24px; display:flex; flex-direction:column; gap:32px;">
+
+      <!-- Events box (red border) -->
+      <div style="border:2px solid #e8003f; border-radius:8px; padding:36px 40px; text-align:center;">
+        <h2 style="font-family:'Inter',sans-serif; font-size:clamp(1.1rem,2.5vw,1.5rem); font-weight:700; color:#e8003f; margin-bottom:28px;">
+          Here are the Exciting Events and Activities we regularly host
+        </h2>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:16px;">
+          <button style="border:2px solid #fff; background:transparent; color:#fff; padding:10px 22px; border-radius:4px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
+            🍀 Workshops
+          </button>
+          <button style="border:2px solid #fff; background:transparent; color:#fff; padding:10px 22px; border-radius:4px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
+            💻 Hackathons
+          </button>
+          <button style="border:2px solid #fff; background:transparent; color:#fff; padding:10px 22px; border-radius:4px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
+            🖥️ Seminars
+          </button>
+          <button style="border:2px solid #fff; background:transparent; color:#fff; padding:10px 22px; border-radius:4px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
+            &lt;/&gt; Coding Contest
+          </button>
+        </div>
+      </div>
+
+      <!-- What is LOL Club & What we do (yellow border, two-column) -->
+      <div style="border:2px solid #c8a200; border-radius:8px; padding:36px 40px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+
+        <!-- Left column -->
+        <div>
+          <h2 style="font-family:'Inter',sans-serif; font-size:1.15rem; font-weight:700; color:#c8a200; margin-bottom:16px;">What is LOL Club?</h2>
+          <p style="font-size:0.88rem; color:#ccc; line-height:1.8; text-align:justify;">
+            LOL Coding Club is a vibrant and inclusive community built by students and dedicated to students. As the name suggests, we believe in Learning Out Loud, where education becomes a thrilling and interactive experience. Our mission is to create a platform where students can come together, collaborate, and dive into the fascinating world of coding and technology.
+          </p>
+        </div>
+
+        <!-- Right column -->
+        <div>
+          <h2 style="font-family:'Inter',sans-serif; font-size:1.15rem; font-weight:700; color:#c8a200; margin-bottom:16px;">What we do?</h2>
+          <p style="font-size:0.88rem; color:#ccc; line-height:1.8; text-align:justify;">
+            At LOL Coding Club, we are committed to fostering a supportive environment that nurtures skill development and creativity. Our community thrives on the passion for coding and the desire to learn and grow together. Whether you are a beginner or an experienced coder, we welcome all skill levels to join us on this exciting journey of discovery and innovation.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — Mission & Vision
+  ════════════════════════════════════════ -->
+  <section id="about-mission" style="padding: 48px 0 72px; background:#000;">
+    <div style="max-width:960px; margin:0 auto; padding:0 24px;">
+
+      <!-- MISSION -->
+      <div style="margin-bottom:64px;">
+        <h2 style="font-family:'Inter',sans-serif; font-size:2rem; font-weight:900; color:#e8003f; margin-bottom:0; letter-spacing:1px;">MISSION</h2>
+        <div style="height:3px; background:#e8003f; margin:8px 0 32px; border-radius:2px;"></div>
+
+        <div style="display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start;">
+          <!-- Bullet list -->
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Foster a dynamic and inclusive community of learners.
+            </li>
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Unite members with a shared passion for coding and technology.
+            </li>
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Provide a supportive environment for skill enhancement.
+            </li>
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Encourage exploration of new technologies and coding concepts.
+            </li>
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Collaborate on innovative coding projects and initiatives.
+            </li>
+            <li style="color:#ddd; font-size:0.9rem; display:flex; gap:12px; align-items:flex-start;">
+              <span style="color:#e8003f; font-weight:700; flex-shrink:0;">&lt;/&gt;</span>
+              Prepare individuals to adapt in the ever-evolving digital landscape.
+            </li>
+          </ul>
+          <!-- Dartboard image -->
+          <div style="width:160px; height:160px; border-radius:4px; overflow:hidden; flex-shrink:0; background:#222; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            🎯
+          </div>
+        </div>
+      </div>
+
+      <!-- VISION -->
+      <div>
+        <h2 style="font-family:'Inter',sans-serif; font-size:2rem; font-weight:900; color:#FFD600; margin-bottom:0; letter-spacing:1px; text-align:right;">VISION</h2>
+        <div style="height:3px; background:#c8a200; margin:8px 0 20px; border-radius:2px;"></div>
+        <div style="display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#888;"></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:start;">
+          <!-- Person/silhouette image -->
+          <div style="width:180px; height:140px; border-radius:4px; overflow:hidden; flex-shrink:0; background:#1a1a1a; display:flex; align-items:center; justify-content:center; font-size:4rem;">
+            🌇
+          </div>
+          <!-- Vision text -->
+          <p style="font-size:0.9rem; color:#ccc; line-height:1.9; text-align:justify; margin:0;">
+            We envision a dynamic community of lifelong learners united by their passion for coding and technology.
+            Our goal is to provide a supportive environment that fosters skill enhancement, encourages exploration
+            of new technologies, and promotes collaboration on innovative coding projects. Ultimately, we aim to
+            prepare individuals to thrive in the ever-evolving digital landscape.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer" id="main-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Column 1: Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logos/lol.png" alt="LOL Coding Club" class="footer-logo-badge" style="object-fit:contain;padding:2px;" />
+          <div>
+            <div class="footer-brand-name">LOL Coding Club</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Walchand Institute Of Technology, Solapur</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://instagram.com/lolcodingclub_wit" target="_blank" rel="noopener" class="social-icon" id="footer-instagram" aria-label="Instagram" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://linkedin.com/company/lol-coding-club" target="_blank" rel="noopener" class="social-icon" id="footer-linkedin" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="social-icon" id="footer-github" aria-label="GitHub" title="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h3 class="footer-col-title">Quick Links</h3>
+        <nav class="footer-links" aria-label="Quick footer links">
+          <a href="index.html"  id="flink-home">Home</a>
+          <a href="about.html"  id="flink-about">About Us</a>
+          <a href="events.html" id="flink-events">Events</a>
+          <a href="team.html"   id="flink-team">Our Team</a>
+          <a href="https://lolclubwit.hashnode.dev/" target="_blank" id="flink-blog">Blog</a>
+          <a href="alumni.html" id="flink-alumni">Alumni Connect</a>
+        </nav>
+      </div>
+
+      <!-- Column 3: Explore -->
+      <div>
+        <h3 class="footer-col-title">Explore</h3>
+        <nav class="footer-links" aria-label="Explore footer links">
+          <a href="https://forms.gle/5z7xPwGLCXi7H6JK6" target="_blank" id="flink-membership">Get Membership</a>
+          <a href="https://lolclubwit.hashnode.dev/newsletter" target="_blank" id="flink-newsletter">Subscribe Newsletter</a>
+          <a href="https://forms.gle/Z6DweHCPtx71WQ8z6" target="_blank" id="flink-blog-write">Write for LOL Blog</a>
+          <a href="https://forms.gle/e9BXPs5g1SFAZd5J8" target="_blank" id="flink-suggestion">Suggestion Box</a>
+        </nav>
+      </div>
+
+      <!-- Column 4: Newsletter -->
+      <div>
+        <h3 class="footer-col-title">Stay Updated</h3>
+        <p class="footer-newsletter-desc">Get the latest updates on events, workshops, and hackathons from LOL Coding Club.</p>
+        <form class="newsletter-form" id="footer-newsletter-form" novalidate>
+          <input type="email" class="newsletter-input" id="footer-email-input" placeholder="Enter your email" aria-label="Email address" required />
+          <button type="submit" class="newsletter-btn" id="footer-subscribe-btn">Subscribe →</button>
+        </form>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <!-- Footer Bottom Bar -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-copyright">© 2026 <span>LOL Coding Club</span> · WIT College · All rights reserved. Made with ❤️ by students, for students.</p>
+        <div class="footer-bottom-links">
+          <a href="#" id="flink-privacy">Privacy Policy</a>
+          <a href="#" id="flink-terms">Terms of Use</a>
+          <a href="#" id="flink-contact">Contact</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</footer>
+
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

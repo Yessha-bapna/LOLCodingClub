@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alumni Connect — LOL Coding Club, WIT Solapur. Browse our alumni network by batch and add yourself." />
+  <title>Alumni Connect | LOL Coding Club — WIT College</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFD600'/%3E%3Ctext x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-weight='900' font-size='10' fill='%23080808'%3ELOL%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Alumni-specific styles ── */
+    .alumni-main { background: #000; margin-top: var(--nav-height); min-height: 100vh; }
+
+    .alumni-header-bar {
+      max-width: 1100px; margin: 0 auto;
+      padding: 40px 24px 0;
+      display: flex; justify-content: flex-end;
+    }
+
+    .add-yourself-btn {
+      display: inline-block;
+      text-decoration: none;
+      border: 2px solid #fff;
+      background: transparent;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .add-yourself-btn:hover { background: #fff; color: #000; }
+
+    .batch-section { max-width: 1100px; margin: 0 auto; padding: 48px 24px 0; }
+
+    .batch-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: #FFD600;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .alumni-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 48px;
+      font-size: 0.88rem;
+    }
+    .alumni-table th {
+      background: #000;
+      color: #FFD600;
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid #FFD600;
+    }
+    .alumni-table td {
+      padding: 12px 16px;
+      border: 1px solid #444;
+      color: #ddd;
+      vertical-align: top;
+      background: #000;
+    }
+    .alumni-table tr:hover td { background: #0d0d0d; }
+
+    .alumni-table a {
+      color: #bbb;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .alumni-table a:hover { color: #FFD600; text-decoration: underline; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 40px;
+      width: min(560px, 92vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .modal-box h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #FFD600;
+      margin-bottom: 6px;
+    }
+    .modal-box p.sub {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 28px;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 18px;
+      background: none; border: none;
+      color: #888; font-size: 1.4rem; cursor: pointer;
+    }
+    .modal-close:hover { color: #fff; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #aaa;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: #FFD600; }
+    .form-group textarea { resize: vertical; min-height: 72px; }
+    .form-group select option { background: #1a1a1a; }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #FFD600;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit-btn:hover { background: #e6c000; }
+
+    .success-banner {
+      display: none;
+      background: rgba(0,200,100,0.12);
+      border: 1px solid #00c864;
+      color: #00c864;
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<header id="header-placeholder">
+  <nav class="navbar" id="main-navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <div class="nav-logos">
+        <a href="index.html" class="nav-logo-link" id="logo-lol" aria-label="LOL Coding Club Home">
+          <img src="logos/lol.png" alt="LOL Coding Club" class="logo-badge logo-lol" style="object-fit:contain;padding:2px;" />
+        </a>
+        <div class="logo-divider" aria-hidden="true"></div>
+        <a href="https://witsolapur.org/" class="nav-logo-link" id="logo-wit" aria-label="WIT College" target="_blank" rel="noopener">
+          <img src="logos/wit.jfif" alt="WIT College" class="logo-badge logo-wit" style="object-fit:contain;padding:2px;" />
+        </a>
+      </div>
+      <nav class="nav-menu" aria-label="Desktop navigation">
+        <a href="index.html"  class="nav-link"             id="nav-home">Home</a>
+        <a href="https://witsolapur.org/" class="nav-link" id="nav-wit" target="_blank" rel="noopener">WIT</a>
+        <a href="about.html"  class="nav-link"             id="nav-about">About</a>
+        <a href="events.html" class="nav-link"             id="nav-events">Events</a>
+        <a href="team.html"   class="nav-link"             id="nav-team">Team</a>
+        <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="nav-blog">Blog</a>
+        <a href="alumni.html" class="nav-link alumni-link active" id="nav-alumni">Alumni Connect</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+    <nav class="nav-menu-mobile" aria-label="Mobile navigation">
+      <a href="index.html"  class="nav-link"             id="mob-home">Home</a>
+      <a href="https://witsolapur.org/" class="nav-link" id="mob-wit" target="_blank" rel="noopener">WIT</a>
+      <a href="about.html"  class="nav-link"             id="mob-about">About</a>
+      <a href="events.html" class="nav-link"             id="mob-events">Events</a>
+      <a href="team.html"   class="nav-link"             id="mob-team">Team</a>
+      <a href="https://lolclubwit.hashnode.dev/" target="_blank" class="nav-link" id="mob-blog">Blog</a>
+      <a href="alumni.html" class="nav-link alumni-link active" id="mob-alumni">Alumni Connect</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="alumni-main">
+
+  <!-- Top-right Add yourself button -->
+  <div class="alumni-header-bar">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScUtHxom07KN71DAnFLdtTTSxlhLTz29BEPm7dorvUX76F5kQ/viewform" target="_blank" rel="noopener" class="add-yourself-btn" id="open-modal-btn">Add yourself!</a>
+  </div>
+
+  <!-- ══ BATCH OF 2023 ══ -->
+  <div class="batch-section">
+    <h2 class="batch-title">Batch of 2023</h2>
+    <table class="alumni-table" id="table-2023">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>LinkedIn</th>
+          <th>Portfolio/Website</th>
+          <th>Domain of Expertise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Akash Kanni</td>
+          <td>Akasgkanni45@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/akash-kanni-2a0aa21b2/" target="_blank" rel="noopener">https://www.linkedin.com/in/akash-kanni-2a0aa21b2/</a></td>
+          <td><a href="https://leetcode.com/Akash_10/" target="_blank" rel="noopener">https://leetcode.com/Akash_10/</a></td>
+          <td>DSA</td>
+        </tr>
+        <tr>
+          <td>Sanyam Saurabh Rawane</td>
+          <td>sanyam.rawane@gmail.com</td>
+          <td><a href="http://www.linkedin.com/in/sanyamrawane/" target="_blank" rel="noopener">http://www.linkedin.com/in/sanyamrawane/</a></td>
+          <td></td>
+          <td>Full stack (Java)</td>
+        </tr>
+        <tr>
+          <td>Shreyas Sanjay Deodhare</td>
+          <td>shreyasdeodhare18@gmail.com</td>
+          <td><a href="https://shorturl.at/jwx35" target="_blank" rel="noopener">https://shorturl.at/jwx35</a></td>
+          <td></td>
+          <td>AI-ML, Cloud Computing</td>
+        </tr>
+        <tr>
+          <td>Suksham Sharma</td>
+          <td>sukshamsharma1864@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/suksham-sharma-05044b229/" target="_blank" rel="noopener">https://www.linkedin.com/in/suksham-sharma-05044b229/</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Varun Lohade</td>
+          <td>varunlohade@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/varun-lohade/" target="_blank" rel="noopener">https://www.linkedin.com/in/varun-lohade/</a></td>
+          <td></td>
+          <td>App development, Generative AI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ BATCH OF 2022 ══ -->
+  <div class="batch-section">
+    <h2 class="batch-title">Batch of 2022</h2>
+    <table class="alumni-table" id="table-2022">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>LinkedIn</th>
+          <th>Portfolio/Website</th>
+          <th>Domain of Expertise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aditya Kankriya</td>
+          <td>adityask22@iitk.ac.in</td>
+          <td><a href="https://www.linkedin.com/in/adityakankriya/" target="_blank" rel="noopener">https://www.linkedin.com/in/adityakankriya/</a></td>
+          <td></td>
+          <td>AI-ML, Cybersecurity</td>
+        </tr>
+        <tr>
+          <td>Jay Gandhi</td>
+          <td>jaygandhi129@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/jaygandhi129" target="_blank" rel="noopener">https://www.linkedin.com/in/jaygandhi129</a></td>
+          <td><a href="https://jaygandhi.tech/" target="_blank" rel="noopener">https://jaygandhi.tech/</a></td>
+          <td>Software development, Software architecture, Web development</td>
+        </tr>
+        <tr>
+          <td>Pratik Jain</td>
+          <td>pratikpjain.2001@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/coder1508" target="_blank" rel="noopener">https://www.linkedin.com/in/coder1508</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sayyam Gatagat</td>
+          <td>sayyamgatagat@gmail.com</td>
+          <td><a href="https://linkedin.com/in/sayyamgatagat" target="_blank" rel="noopener">https://linkedin.com/in/sayyamgatagat</a></td>
+          <td><a href="https://github.com/sayyamgatagat" target="_blank" rel="noopener">https://github.com/sayyamgatagat</a></td>
+          <td>Web development</td>
+        </tr>
+        <tr>
+          <td>Siddharth Kulkarni</td>
+          <td>mykysid10@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/siddharth-kulkarni-0296a01aa/" target="_blank" rel="noopener">https://www.linkedin.com/in/siddharth-kulkarni-0296a01aa/</a></td>
+          <td><a href="https://www.kaggle.com/mykeysid10" target="_blank" rel="noopener">https://www.kaggle.com/mykeysid10</a></td>
+          <td>AI-ML</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ BATCH OF 2021 ══ -->
+  <div class="batch-section">
+    <h2 class="batch-title">Batch of 2021</h2>
+    <table class="alumni-table" id="table-2021">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>LinkedIn</th>
+          <th>Portfolio/Website</th>
+          <th>Domain of Expertise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Samarth Ganesh Deshpande</td>
+          <td>deshpandesamarth41@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/samarth-deshpande-86627b167/" target="_blank" rel="noopener">https://www.linkedin.com/in/samarth-deshpande-86627b167/</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Tanish Banthia</td>
+          <td>tanishbanthia112@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/tanish-banthia-a559951a3" target="_blank" rel="noopener">https://www.linkedin.com/in/tanish-banthia-a559951a3</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ BATCH OF 2019 ══ -->
+  <div class="batch-section" style="padding-bottom: 72px;">
+    <h2 class="batch-title">Batch of 2019</h2>
+    <table class="alumni-table" id="table-2019">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>LinkedIn</th>
+          <th>Portfolio/Website</th>
+          <th>Domain of Expertise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shubham Agrawal</td>
+          <td>agrawaltec@gmail.com</td>
+          <td><a href="https://www.linkedin.com/in/shubhamagrawal/" target="_blank" rel="noopener">https://www.linkedin.com/in/shubhamagrawal/</a></td>
+          <td><a href="https://www.agrawal.ltd" target="_blank" rel="noopener">www.agrawal.ltd</a></td>
+          <td>Entrepreneur, Graphics Design, UI/UX, Web Development, Digital Marketing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ── ADD YOURSELF MODAL ── -->
+<div class="modal-overlay" id="alumni-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close-btn" aria-label="Close" onclick="document.getElementById('alumni-modal').classList.remove('open')">✕</button>
+    <h2 id="modal-title">Add yourself to Alumni</h2>
+    <p class="sub">Fill in your details and we'll add you to the connect list.</p>
+
+    <div class="success-banner" id="form-success">
+      ✅ Thanks! Your details have been submitted. We'll add you soon.
+    </div>
+
+    <form id="alumni-form" novalidate>
+      <div class="form-group">
+        <label for="f-name">Full Name *</label>
+        <input type="text" id="f-name" placeholder="e.g. Akash Kanni" required />
+      </div>
+      <div class="form-group">
+        <label for="f-email">Email *</label>
+        <input type="email" id="f-email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="f-batch">Batch Year *</label>
+        <select id="f-batch" required>
+          <option value="">— Select batch year —</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="f-linkedin">LinkedIn URL</label>
+        <input type="url" id="f-linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+      </div>
+      <div class="form-group">
+        <label for="f-portfolio">Portfolio / Website</label>
+        <input type="url" id="f-portfolio" placeholder="https://yourwebsite.com" />
+      </div>
+      <div class="form-group">
+        <label for="f-domain">Domain of Expertise</label>
+        <input type="text" id="f-domain" placeholder="e.g. AI-ML, Web Development, DSA" />
+      </div>
+      <button type="submit" class="form-submit-btn" id="alumni-submit-btn">Submit →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer" id="main-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logos/lol.png" alt="LOL Coding Club" class="footer-logo-badge" style="object-fit:contain;padding:2px;" />
+          <div><div class="footer-brand-name">LOL Coding Club</div></div>
+        </div>
+        <p class="footer-brand-desc">Walchand Institute Of Technology, Solapur</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://instagram.com/lolcodingclub_wit" target="_blank" rel="noopener" class="social-icon" id="footer-instagram" aria-label="Instagram" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://linkedin.com/company/lol-coding-club" target="_blank" rel="noopener" class="social-icon" id="footer-linkedin" aria-label="LinkedIn" title="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" class="social-icon" id="footer-github" aria-label="GitHub" title="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Quick Links</h3>
+        <nav class="footer-links" aria-label="Quick footer links">
+          <a href="index.html"  id="flink-home">Home</a>
+          <a href="about.html"  id="flink-about">About Us</a>
+          <a href="events.html" id="flink-events">Events</a>
+          <a href="team.html"   id="flink-team">Our Team</a>
+          <a href="https://lolclubwit.hashnode.dev/" target="_blank" id="flink-blog">Blog</a>
+          <a href="alumni.html" id="flink-alumni">Alumni Connect</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Explore</h3>
+        <nav class="footer-links" aria-label="Explore footer links">
+          <a href="https://forms.gle/5z7xPwGLCXi7H6JK6" target="_blank" id="flink-membership">Get Membership</a>
+          <a href="https://lolclubwit.hashnode.dev/newsletter" target="_blank" id="flink-newsletter">Subscribe Newsletter</a>
+          <a href="https://forms.gle/Z6DweHCPtx71WQ8z6" target="_blank" id="flink-blog-write">Write for LOL Blog</a>
+          <a href="https://forms.gle/e9BXPs5g1SFAZd5J8" target="_blank" id="flink-suggestion">Suggestion Box</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="footer-col-title">Stay Updated</h3>
+        <p class="footer-newsletter-desc">Get the latest updates on events, workshops, and hackathons from LOL Coding Club.</p>
+        <form class="newsletter-form" id="footer-newsletter-form" novalidate>
+          <input type="email" class="newsletter-input" id="footer-email-input" placeholder="Enter your email" aria-label="Email address" required />
+          <button type="submit" class="newsletter-btn" id="footer-subscribe-btn">Subscribe →</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p class="footer-copyright">© 2026 <span>LOL Coding Club</span> · WIT College · All rights reserved. Made with ❤️ by students, for students.</p>
+        <div class="footer-bottom-links">
+          <a href="#" id="flink-privacy">Privacy Policy</a>
+          <a href="#" id="flink-terms">Terms of Use</a>
+          <a href="#" id="flink-contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top-btn" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
+<script>
+  /* Modal close on overlay click */
+  document.getElementById('alumni-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+
+  /* Form submit handler */
+  document.getElementById('alumni-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = document.getElementById('f-name').value.trim();
+    var email   = document.getElementById('f-email').value.trim();
+    var batch   = document.getElementById('f-batch').value;
+    if (!name || !email || !batch) {
+      alert('Please fill in Name, Email, and Batch Year.');
+      return;
+    }
+    // Show success message
+    document.getElementById('form-success').style.display = 'block';
+    document.getElementById('alumni-form').style.opacity = '0.4';
+    document.getElementById('alumni-submit-btn').disabled = true;
+    setTimeout(function() {
+      document.getElementById('alumni-modal').classList.remove('open');
+      document.getElementById('form-success').style.display = 'none';
+      document.getElementById('alumni-form').style.opacity = '1';
+      document.getElementById('alumni-submit-btn').disabled = false;
+      document.getElementById('alumni-form').reset();
+    }, 2500);
+  });
+</script>
+</body>
+</html>
