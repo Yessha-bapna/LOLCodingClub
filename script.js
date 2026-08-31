@@ -23,6 +23,31 @@
 
 "use strict";
 
+/* Keep the Buildathon destination available in every page navbar. */
+function syncBuildathonNav() {
+  var isBuildathonPage = window.location.pathname.toLowerCase().endsWith('/buildathon.html');
+  var desktopAbout = document.getElementById('nav-about');
+  var mobileAbout = document.getElementById('mob-about');
+
+  if (desktopAbout && !document.getElementById('nav-buildathon')) {
+    var desktopLink = document.createElement('a');
+    desktopLink.href = 'buildathon.html';
+    desktopLink.className = 'nav-link' + (isBuildathonPage ? ' active' : '');
+    desktopLink.id = 'nav-buildathon';
+    desktopLink.textContent = 'Buildathon';
+    desktopAbout.insertAdjacentElement('afterend', desktopLink);
+  }
+
+  if (mobileAbout && !document.getElementById('mob-buildathon')) {
+    var mobileLink = document.createElement('a');
+    mobileLink.href = 'buildathon.html';
+    mobileLink.className = 'nav-link' + (isBuildathonPage ? ' active' : '');
+    mobileLink.id = 'mob-buildathon';
+    mobileLink.textContent = 'Buildathon';
+    mobileAbout.insertAdjacentElement('afterend', mobileLink);
+  }
+}
+
 /* ──────────────────────────────────────────────
    1. NAVBAR — SCROLL GLASS EFFECT
 ─────────────────────────────────────────────── */
@@ -378,6 +403,7 @@ function loadFooter() {
 ─────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
   loadFooter();          // fetch & inject footer.html first
+  syncBuildathonNav();
   initNavbarScroll();
   initHamburger();
   initMobileDrawerClose();
