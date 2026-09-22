@@ -22,6 +22,88 @@
         #080808;
     }
 
+    .edition-switcher {
+      padding: 28px 0 0;
+    }
+
+    .edition-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 5px;
+      background: #111;
+      border: 1px solid var(--clr-border);
+      border-radius: 12px;
+    }
+
+    .edition-tab {
+      min-height: 46px;
+      padding: 10px 18px;
+      color: #9ca3af;
+      background: transparent;
+      border-radius: 8px;
+      font-weight: 800;
+      transition: var(--transition);
+    }
+
+    .edition-tab:hover { color: #fff; }
+
+    .edition-tab.active {
+      color: #080808;
+      background: var(--clr-yellow);
+    }
+
+    .edition-panel[hidden] { display: none; }
+
+    .release-panel {
+      display: grid;
+      place-items: center;
+      min-height: 68vh;
+      padding: 70px 0 100px;
+      text-align: center;
+    }
+
+    .release-card {
+      width: min(760px, 100%);
+      padding: clamp(38px, 8vw, 76px) 28px;
+      background: linear-gradient(145deg, #141414, #0d0d0d);
+      border: 1px solid rgba(255, 214, 0, 0.35);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-yellow);
+    }
+
+    .release-card .release-label {
+      color: var(--clr-yellow);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .release-card h1 {
+      margin: 16px auto;
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 7vw, 4.7rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .release-card p {
+      color: #b3b5ba;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+    }
+
+    .release-date {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 12px 18px;
+      color: #080808;
+      background: var(--clr-yellow);
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
     .buildathon-hero {
       position: relative;
       overflow: hidden;
@@ -455,6 +537,16 @@
 </header>
 
 <main class="buildathon-page">
+  <section class="edition-switcher" aria-label="Select Buildathon edition">
+    <div class="container">
+      <div class="edition-tabs" role="tablist" aria-label="Buildathon editions">
+        <button class="edition-tab active" id="tab-buildathon-1" type="button" role="tab" aria-selected="true" aria-controls="panel-buildathon-1" data-edition="1">Buildathon 1.0</button>
+        <button class="edition-tab" id="tab-buildathon-2" type="button" role="tab" aria-selected="false" aria-controls="panel-buildathon-2" data-edition="2">Buildathon 2.0</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="edition-panel" id="panel-buildathon-1" role="tabpanel" aria-labelledby="tab-buildathon-1">
   <section class="buildathon-hero" aria-labelledby="buildathon-title">
     <div class="container">
       <p class="hero-kicker">LOL Coding Club presents</p>
@@ -577,6 +669,20 @@
       </div>
     </div>
   </section>
+  </div>
+
+  <div class="edition-panel" id="panel-buildathon-2" role="tabpanel" aria-labelledby="tab-buildathon-2" hidden>
+    <section class="release-panel">
+      <div class="container">
+        <div class="release-card">
+          <p class="release-label">Buildathon 2.0</p>
+          <h1>Coming Soon</h1>
+          <p>Problem statements will be released on</p>
+          <strong class="release-date">30 September 2026</strong>
+        </div>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="site-footer" id="main-footer" role="contentinfo">
@@ -626,5 +732,29 @@
 
 <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Back to top">↑</button>
 <script src="script.js"></script>
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('.edition-tab');
+    var panels = document.querySelectorAll('.edition-panel');
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var selectedEdition = tab.getAttribute('data-edition');
+
+        tabs.forEach(function (item) {
+          var selected = item === tab;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-selected', String(selected));
+        });
+
+        panels.forEach(function (panel) {
+          panel.hidden = panel.id !== 'panel-buildathon-' + selectedEdition;
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  }());
+</script>
 </body>
 </html>
