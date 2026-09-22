@@ -159,6 +159,22 @@
 
     .buildathon-title span { color: var(--clr-yellow); }
 
+    .winner-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 9px 16px;
+      color: #080808;
+      background: var(--clr-yellow);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(255, 214, 0, 0.24);
+    }
+
     .buildathon-lead {
       max-width: 690px;
       margin: 26px auto 0;
@@ -551,6 +567,8 @@
   <div class="edition-panel" id="panel-buildathon-1" role="tabpanel" aria-labelledby="tab-buildathon-1">
   <section class="buildathon-hero" aria-labelledby="buildathon-title">
     <div class="container">
+      <div class="winner-flag" role="status"><span aria-hidden="true">🏆</span> Winners Announced</div>
+      <br />
       <p class="hero-kicker">LOL Coding Club presents</p>
       <h1 class="buildathon-title" id="buildathon-title">BUILD<span>ATHON</span></h1>
       <p class="buildathon-lead">Choose a real-world problem. Design an intelligent system. Build a technically strong solution that turns data, AI and thoughtful engineering into meaningful impact.</p>
