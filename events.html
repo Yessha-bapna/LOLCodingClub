@@ -329,7 +329,8 @@
       <p style="font-size:0.95rem;color:#888;margin-top:6px;margin-bottom:36px;text-align:center;">Relive the amazing workshops, contests, and sessions we've hosted over the years.</p>
 
       <div class="event-year-filters" aria-label="Filter past events by year">
-        <button class="event-year-filter active" type="button" data-year="2026" aria-pressed="true">2026</button>
+        <button class="event-year-filter active" type="button" data-year="all" aria-pressed="true">All Events</button>
+        <button class="event-year-filter" type="button" data-year="2026" aria-pressed="false">2026</button>
         <button class="event-year-filter" type="button" data-year="2025" aria-pressed="false">2025</button>
         <button class="event-year-filter" type="button" data-year="2024" aria-pressed="false">2024</button>
         <button class="event-year-filter" type="button" data-year="2023" aria-pressed="false">2023</button>
@@ -684,7 +685,7 @@
 
         function filterByYear(year) {
           cards.forEach(card => {
-            card.hidden = card.dataset.year !== year;
+            card.hidden = year !== 'all' && card.dataset.year !== year;
           });
           activeCards = cards.filter(card => !card.hidden);
           total = activeCards.length;
@@ -710,7 +711,7 @@
           resizeTimer = setTimeout(() => { buildDots(); goTo(0); }, 200);
         });
 
-        filterByYear('2026');
+        filterByYear('all');
       })();
     </script>
 
