@@ -398,12 +398,23 @@ function loadFooter() {
     });
 }
 
+/* Keep every membership call-to-action pointed at the current form. */
+function syncMembershipLinks() {
+  var membershipUrl = 'https://forms.gle/PvgHK8kd8TWVaURc9';
+  document.querySelectorAll('#btn-membership, #flink-membership').forEach(function (link) {
+    link.href = membershipUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  });
+}
+
 /* ──────────────────────────────────────────────
    INIT — Wire up everything on DOM ready
 ─────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
   loadFooter();          // fetch & inject footer.html first
   syncBuildathonNav();
+  syncMembershipLinks();
   initNavbarScroll();
   initHamburger();
   initMobileDrawerClose();
