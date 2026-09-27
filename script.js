@@ -408,6 +408,18 @@ function syncMembershipLinks() {
   });
 }
 
+/* Use the club's white logo as the browser tab icon on every page. */
+function syncBrowserIcon() {
+  var icon = document.querySelector('link[rel="icon"]');
+  if (!icon) {
+    icon = document.createElement('link');
+    icon.rel = 'icon';
+    document.head.appendChild(icon);
+  }
+  icon.type = 'image/png';
+  icon.href = 'logos/lol.png';
+}
+
 /* ──────────────────────────────────────────────
    INIT — Wire up everything on DOM ready
 ─────────────────────────────────────────────── */
@@ -415,6 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loadFooter();          // fetch & inject footer.html first
   syncBuildathonNav();
   syncMembershipLinks();
+  syncBrowserIcon();
   initNavbarScroll();
   initHamburger();
   initMobileDrawerClose();
