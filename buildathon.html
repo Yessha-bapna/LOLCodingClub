@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LOL Coding Club Buildathon 2026 — explore three AI-powered problem statements and prepare for the project showcase." />
+  <meta name="description" content="Explore LOL Coding Club Buildathon 2.0 problem statements for SY, TY and Final Year, presentation guidelines and showcase updates." />
   <meta name="author" content="LOL Coding Club, WIT College" />
   <title>Buildathon 2026 | LOL Coding Club</title>
   <link rel="icon" type="image/png" href="logos/lol.png" />
@@ -55,6 +55,12 @@
     }
 
     .edition-panel[hidden] { display: none; }
+
+    .problem-grid.edition-two-problems { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .showcase-date .date-pending { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin: 18px 0; }
+    @media (max-width: 700px) {
+      .problem-grid.edition-two-problems { grid-template-columns: 1fr; }
+    }
 
     .release-panel {
       display: grid;
@@ -564,13 +570,13 @@
   <section class="edition-switcher" aria-label="Select Buildathon edition">
     <div class="container">
       <div class="edition-tabs" role="tablist" aria-label="Buildathon editions">
-        <button class="edition-tab active" id="tab-buildathon-1" type="button" role="tab" aria-selected="true" aria-controls="panel-buildathon-1" data-edition="1">Buildathon 1.0</button>
-        <button class="edition-tab" id="tab-buildathon-2" type="button" role="tab" aria-selected="false" aria-controls="panel-buildathon-2" data-edition="2">Buildathon 2.0</button>
+        <button class="edition-tab" id="tab-buildathon-1" type="button" role="tab" aria-selected="false" aria-controls="panel-buildathon-1" data-edition="1" tabindex="-1">Buildathon 1.0</button>
+        <button class="edition-tab active" id="tab-buildathon-2" type="button" role="tab" aria-selected="true" aria-controls="panel-buildathon-2" data-edition="2">Buildathon 2.0</button>
       </div>
     </div>
   </section>
 
-  <div class="edition-panel" id="panel-buildathon-1" role="tabpanel" aria-labelledby="tab-buildathon-1">
+  <div class="edition-panel" id="panel-buildathon-1" role="tabpanel" aria-labelledby="tab-buildathon-1" hidden>
   <section class="buildathon-hero" aria-labelledby="buildathon-title">
     <div class="container">
       <div class="winner-flag" role="status"><span aria-hidden="true">🏆</span> Winners Announced</div>
@@ -697,14 +703,92 @@
   </section>
   </div>
 
-  <div class="edition-panel" id="panel-buildathon-2" role="tabpanel" aria-labelledby="tab-buildathon-2" hidden>
-    <section class="release-panel">
+  <div class="edition-panel" id="panel-buildathon-2" role="tabpanel" aria-labelledby="tab-buildathon-2">
+    <section class="buildathon-hero" aria-labelledby="buildathon-two-title">
       <div class="container">
-        <div class="release-card">
-          <p class="release-label">Buildathon 2.0</p>
-          <h1>Coming Soon</h1>
-          <p>Problem statements will be released on</p>
-          <strong class="release-date">30 September 2026</strong>
+        <p class="hero-kicker">LOL Coding Club presents</p>
+        <h1 class="buildathon-title" id="buildathon-two-title">BUILD<span>ATHON 2.0</span></h1>
+        <p class="buildathon-lead">Explore the problem statements for your year, develop your solution and bring your working project to the showcase.</p>
+        <div class="hero-meta" aria-label="Buildathon 2.0 highlights">
+          <span class="meta-pill">SY · TY · Final Year</span>
+          <span class="meta-pill">Up to 6 Slides</span>
+          <span class="meta-pill">Showcase date: To be announced soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="announcement-wrap" aria-label="Buildathon 2.0 notices">
+      <div class="container">
+        <div class="notice-stack">
+          <div class="notice-card">
+            <div class="notice-icon" aria-hidden="true">!</div>
+            <div>
+              <h2>Important Notice</h2>
+              <p>The final showcase date will be announced soon. Further instructions and round details will be shared via email, so please keep an eye on your inbox. For queries, contact <a href="mailto:gururajgurram1512@gmail.com">gururajgurram1512@gmail.com</a> or <a href="mailto:bapnayessha05@gmail.com">bapnayessha05@gmail.com</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem-section" aria-labelledby="problems-two-heading">
+      <div class="container">
+        <p class="section-kicker">Find your challenge</p>
+        <div class="section-heading-row">
+          <h2 id="problems-two-heading">Problem Statements</h2>
+          <p>Open the document for your year. Read the full problem statements and follow the objectives, requirements and deliverables specified in your chosen statement.</p>
+        </div>
+        <div class="problem-grid edition-two-problems">
+          <article class="problem-card">
+            <span class="problem-number">SECOND YEAR / SY</span>
+            <h3>Problem Statements for SY</h3>
+            <p>Second Year participants can find their problem statements, context and complete requirements in the document below.</p>
+            <a class="doc-button" href="https://docs.google.com/document/d/1Kz3rxsv1ZuNGhNRgJpiQ3hTqpM1wxOAZUV5y57vJ8tk/edit?tab=t.0#heading=h.okx8752gixyb" target="_blank" rel="noopener">Read SY Problem Statements <small>Open document ↗</small></a>
+          </article>
+          <article class="problem-card">
+            <span class="problem-number">THIRD YEAR / TY &amp; FINAL YEAR</span>
+            <h3>Problem Statements for TY &amp; Final Year</h3>
+            <p>Third Year and Final Year participants can find their problem statements, context and complete requirements in the document below.</p>
+            <a class="doc-button" href="https://docs.google.com/document/d/1j9Xm2Q9MtaLjoPTbDx-fqBYB-NoaUu2p2GMpVrt0DOA/edit?tab=t.0" target="_blank" rel="noopener">Read TY &amp; Final Year Statements <small>Open document ↗</small></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-section" aria-labelledby="showcase-two-heading">
+      <div class="container">
+        <div class="showcase-card">
+          <div class="showcase-date">
+            <span class="date-label">Final showcase</span>
+            <strong class="date-pending">To be<br />announced soon</strong>
+            <span class="date-month">Keep an eye on your inbox</span>
+          </div>
+          <div class="showcase-info">
+            <p class="section-kicker">Presentation round</p>
+            <h2 id="showcase-two-heading">Presentation &amp; Project Showcase</h2>
+            <p>Prepare a technically focused presentation of up to <strong>6 slides</strong>. The presentation should primarily showcase your working project and clearly explain its technical architecture and implementation.</p>
+            <ul class="presentation-points">
+              <li>Proposed solution</li>
+              <li>System architecture</li>
+              <li>Core technical implementation</li>
+              <li>AI/ML and GenAI approach</li>
+              <li>Unique features</li>
+              <li>Additional features and future scope</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-strip" aria-labelledby="contact-two-heading">
+      <div class="container">
+        <div>
+          <h2 id="contact-two-heading">Have a question?</h2>
+          <p>Reach out to the Buildathon coordinators.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:gururajgurram1512@gmail.com">gururajgurram1512@gmail.com</a>
+          <a href="mailto:bapnayessha05@gmail.com">bapnayessha05@gmail.com</a>
         </div>
       </div>
     </section>
@@ -763,23 +847,40 @@
     var tabs = document.querySelectorAll('.edition-tab');
     var panels = document.querySelectorAll('.edition-panel');
 
-    tabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var selectedEdition = tab.getAttribute('data-edition');
-
+    function selectEdition(selectedEdition) {
         tabs.forEach(function (item) {
-          var selected = item === tab;
+          var selected = item.getAttribute('data-edition') === selectedEdition;
           item.classList.toggle('active', selected);
           item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
         });
 
         panels.forEach(function (panel) {
           panel.hidden = panel.id !== 'panel-buildathon-' + selectedEdition;
         });
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectFromHash() {
+      selectEdition(window.location.hash === '#buildathon-1' ? '1' : '2');
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        var edition = tab.getAttribute('data-edition');
+        selectEdition(edition);
+        window.location.hash = 'buildathon-' + edition;
+      });
+      tab.addEventListener('keydown', function (event) {
+        if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].indexOf(event.key) === -1) return;
+        event.preventDefault();
+        var next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+        tabs[next].focus();
+        tabs[next].click();
       });
     });
+    window.addEventListener('hashchange', selectFromHash);
+    selectFromHash();
   }());
 </script>
 </body>
